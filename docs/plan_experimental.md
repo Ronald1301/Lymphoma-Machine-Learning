@@ -1,4 +1,6 @@
-# Plan experimental de siete días
+# Plan de implementación provisional
+
+> **Propuesta preliminar.** Este plan es provisional y está sujeto a revisión en la siguiente fase del proyecto. El plazo, el hardware, la cohorte de entrenamiento y las mejoras propuestas se confirmarán con el profesor y el equipo antes de empezar la implementación.
 
 ## 1. Objetivo y alcance
 
@@ -153,9 +155,9 @@ Las cifras son estimaciones de planificación, no resultados medidos. Si una ép
 
 Criterio de aceptación de cuantización: descenso de Dice mediana <0,01, aumento de FNV <5% relativo y ausencia de pérdida desproporcionada en lesiones <1 mL. Si no se cumple, conservar FP32.
 
-## 10. Cronograma
+## 10. Tareas
 
-### Día 1 — Datos y reproducibilidad
+### Datos y reproducibilidad
 
 - Descargar una muestra y verificar licencias/metadatos.
 - Construir manifiesto por paciente.
@@ -164,7 +166,7 @@ Criterio de aceptación de cuantización: descenso de Dice mediana <0,01, aument
 
 **Salida:** 10 casos preprocesados y visualmente verificados.
 
-### Día 2 — Baseline mínimo
+### Baseline mínimo
 
 - Implementar dataset/loader, loss y métricas.
 - Overfit de 2–4 casos.
@@ -172,31 +174,31 @@ Criterio de aceptación de cuantización: descenso de Dice mediana <0,01, aument
 
 **Criterio:** loss desciende y el modelo recupera lesiones del microconjunto.
 
-### Día 3 — Baseline completo
+### Baseline completo
 
 - Entrenar PET+CT.
 - Ajustar solo LR, parche o sampling si hay fallo evidente.
 - Congelar checkpoint y umbral en validación.
 
-### Día 4 — Ablación PET-only y análisis inicial
+### Ablación PET-only y análisis inicial
 
 - Entrenar PET-only con mismo presupuesto.
 - Comparar validación y revisar FP fisiológicos.
 
-### Día 5 — Mejora principal
+### Mejora principal
 
 - Entrenar PET+CT con aumentación de desalineación.
 - Ejecutar stress tests de shift.
 - Solo si termina temprano, precomputar prior anatómico.
 
-### Día 6 — Test y estadística
+### Test y estadística
 
 - Ejecutar inferencia una vez en test.
 - Calcular métricas voxel/lesión/paciente.
 - Bland–Altman, ICC, bootstrap y análisis por tamaño.
 - Revisar 10 mejores y 10 peores casos.
 
-### Día 7 — Despliegue y entrega
+### Despliegue y entrega
 
 - Exportar ONNX.
 - Benchmark CPU; NPU opcional.
@@ -207,7 +209,7 @@ Criterio de aceptación de cuantización: descenso de Dice mediana <0,01, aument
 
 | Riesgo | Señal temprana | Plan B |
 |---|---|---|
-| Descarga/datos demasiado grandes | Día 1 no termina | Trabajar con 40–80 pacientes estratificados y declarar estudio piloto |
+| Descarga/datos demasiado grandes | La preparación de datos no termina | Trabajar con 40–80 pacientes estratificados y declarar estudio piloto |
 | Pocos casos identificables como linfoma | Metadatos insuficientes | Usar cohorte oncológica general para preentrenar y evaluar solo casos de linfoma disponibles |
 | OOM en T4 | Parche 96³ no cabe | 80³, `init_filters=12`, gradient accumulation |
 | Entrenamiento >12 h | Época demasiado lenta | 150 épocas, menos samples/epoch, early stopping, una semilla |
