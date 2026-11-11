@@ -1,45 +1,47 @@
 # Tareas del proyecto (issues de GitHub)
 
-**Tema:** Optimización de la detección y evaluación de lesiones en linfomas mediante PET/CT  
-**Cierre interno:** 20 dic 2026 · **Colchón:** 21-31 dic
+**Proyecto:** Optimización de la detección y evaluación de lesiones en linfomas mediante PET/CT  
+**Equipo:** 4 personas (P1-P4), sin roles fijos · **Cierre interno:** 20 dic 2026 · **Colchón:** 21-31 dic
+
+Este documento y `create_issues.py` salen de la misma fuente: las 55 tareas son idénticas en ambos.
 
 ## Cómo trabajamos
 
-El trabajo se agrupa por **componente** (lo que estamos construyendo), y cada componente se reparte entre los seis:
+No hay roles fijos. El trabajo se agrupa por **componente** (lo que estamos construyendo), y cada componente se reparte entre los cuatro:
 
-1. **Todos en todas las fases.** Cada fase tiene tareas obligatorias para todos
+1. **Todos en todas las fases.** Cada fase tiene tareas obligatorias de P1, P2, P3 y P4.
 2. **Todos en todos los componentes.** Cada persona escribe una parte de los datos, del modelo, de las métricas y del despliegue.
-3. **Todos entrenan.** P3 el baseline PET+CT, P4 el PET-only, P2 la variante con desalineación; P1, P5 y P6 las semillas adicionales (baseline, PET-only y desalineación). Además todos corren el smoke test en su cuenta (T24). El prior anatómico (T34-T35) es opcional.
-4. **Revisión en anillo.** Cada PR lo revisa el siguiente en la lista P1→P2→P3→P4→P5→P6→P1. Así todos conocen el código de todos.
-5. **Coordinación rotativa.** Cada semana coordina una persona: mantiene el tablero, convoca el daily de 10 min, desbloquea issues sin avance en 48 h y hace merge de PRs aprobados. Rota P1→P2→P3→P4→P5→P6.
-6. **Tareas de todos** (marcadas con `*` en las tablas): decisiones y trabajos que hacemos todos (cuentas, partición, smoke test, tests, verificación cruzada, entrega).
+3. **Los cuatro entrenan.** P3 entrena el baseline PET+CT, P4 el PET-only, P2 la variante con desalineación y P1 la semilla adicional; además todos corren el smoke test en su cuenta (T24). Los prior anatómico (T34-T35) son opcionales.
+4. **Revisión en anillo.** Cada PR lo revisa el siguiente en la lista P1→P2→P3→P4→P1. Así todos conocen el código de todos.
+5. **Coordinación rotativa.** Cada semana coordina una persona: mantiene el tablero, convoca el daily de 10 min, desbloquea issues sin avance en 48 h y hace merge de PRs aprobados. Rota P1→P2→P3→P4.
+6. **Tareas de los cuatro** (marcadas con `*` en las tablas): decisiones y trabajos que hacemos todos (cuentas, partición, smoke test, tests, verificación cruzada, entrega).
 
 ## Quién trabaja en qué: por componente
 
-| Componente | P1 | P2 | P3 | P4 | P5 | P6 |
-|---|---|---|---|---|---|---|
-| **Base** | T01, T05*, T06, T23* | T02, T05*, T23* | T03, T05*, T23* | T04, T05*, T23* | T01, T05*, T23* | T05*, T06, T23* |
-| **Datos** | T07, T10*, T11, T14 | T08, T10*, T12 | T09, T10*, T13 | T10*, T11 | T07, T10*, T13, T14 | T09, T10*, T12, T14 |
-| **Modelo** | T15 | T16, T29 | T17, T19, T34 | T18 | T15, T18 | T16, T19, T29 |
-| **Entrenamiento** | T24*, T31 | T24*, T30 | T24*, T25 | T24*, T26, T35 | T24*, T56 | T24*, T57 |
-| **Evaluación** | T20, T27, T36*, T42 | T21, T28, T36*, T37, T38 | T32, T36*, T39, T41 | T22, T33, T36*, T40 | T20, T32, T36*, T37, T39 | T21, T22, T28, T36*, T38, T41 |
-| **Despliegue** | T43, T46, T47 | T44 | T43 | T45 | T45 | T44, T46 |
-| **Informe** | T48, T52, T54*, T55* | T49, T54*, T55* | T50, T53, T54*, T55* | T51, T54*, T55* | T48, T49, T51, T54*, T55* | T50, T52, T54*, T55* |
+| Componente | P1 | P2 | P3 | P4 |
+|---|---|---|---|---|
+| **Base** | T01, T05*, T06, T23* | T02, T05*, T23* | T03, T05*, T23* | T04, T05*, T23* |
+| **Datos** | T07, T10*, T14 | T08, T10*, T12 | T09, T10*, T13 | T10*, T11 |
+| **Modelo** | T15 | T16, T29 | T17, T19, T34 | T18 |
+| **Entrenamiento** | T24*, T31 | T24*, T30 | T24*, T25 | T24*, T26, T35 |
+| **Evaluación** | T20, T27, T36, T42 | T21, T28, T37, T38 | T32, T39, T41 | T22, T33, T40 |
+| **Despliegue** | T46, T47 | T44 | T43 | T45 |
+| **Informe** | T48, T52, T54*, T55* | T49, T54*, T55* | T50, T53, T54*, T55* | T51, T54*, T55* |
 
-`*` = tarea de todos. Las tareas opcionales (T34, T35, T47) no cuentan para el reparto obligatorio.
+`*` = tarea de los cuatro. Las tareas opcionales (T34, T35, T47) no cuentan para el reparto obligatorio.
 
 ## Quién trabaja en qué: por fase
 
-| Fase | P1 | P2 | P3 | P4 | P5 | P6 |
-|---|---|---|---|---|---|---|
-| **0 · Arranque** | T01, T05*, T06 | T02, T05* | T03, T05* | T04, T05* | T01, T05* | T05*, T06 |
-| **1 · Datos** | T07, T10*, T11, T14 | T08, T10*, T12 | T09, T10*, T13 | T10*, T11 | T07, T10*, T13, T14 | T09, T10*, T12, T14 |
-| **2 · Código base** | T15, T20, T23* | T16, T21, T23* | T17, T19, T23* | T18, T22, T23* | T15, T18, T20, T23* | T16, T19, T21, T22, T23* |
-| **3 · Baselines** | T24*, T27 | T24*, T28 | T24*, T25 | T24*, T26 | T24* | T24*, T28 |
-| **4 · Mejoras** | T31 | T29, T30 | T32, T34 | T33, T35 | T32, T56 | T29, T57 |
-| **5 · Evaluación** | T36*, T42 | T36*, T37, T38 | T36*, T39, T41 | T36*, T40 | T36*, T37, T39 | T36*, T38, T41 |
-| **6 · Despliegue** | T43, T46, T47 | T44 | T43 | T45 | T45 | T44, T46 |
-| **7 · Informe y entrega** | T48, T52, T54*, T55* | T49, T54*, T55* | T50, T53, T54*, T55* | T51, T54*, T55* | T48, T49, T51, T54*, T55* | T50, T52, T54*, T55* |
+| Fase | P1 | P2 | P3 | P4 |
+|---|---|---|---|---|
+| **0 · Arranque** | T01, T05*, T06 | T02, T05* | T03, T05* | T04, T05* |
+| **1 · Datos** | T07, T10*, T14 | T08, T10*, T12 | T09, T10*, T13 | T10*, T11 |
+| **2 · Código base** | T15, T20, T23* | T16, T21, T23* | T17, T19, T23* | T18, T22, T23* |
+| **3 · Baselines** | T24*, T27 | T24*, T28 | T24*, T25 | T24*, T26 |
+| **4 · Mejoras** | T31 | T29, T30 | T32, T34 | T33, T35 |
+| **5 · Evaluación** | T36, T42 | T37, T38 | T39, T41 | T40 |
+| **6 · Despliegue** | T46, T47 | T44 | T43 | T45 |
+| **7 · Informe y entrega** | T48, T52, T54*, T55* | T49, T54*, T55* | T50, T53, T54*, T55* | T51, T54*, T55* |
 
 ## Calendario por fases
 
@@ -58,20 +60,18 @@ El trabajo se agrupa por **componente** (lo que estamos construyendo), y cada co
 
 ## Plan semana a semana
 
-| Semana | Fechas | Fases | Coordina | P1 | P2 | P3 | P4 | P5 | P6 | Todos |
-|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | 2-8 nov | 0 | P1 | T01, T06 | T02 | T03 | T04 | T01 | T06 | T05 |
-| 2 | 9-15 nov | 1, 2, 7 | P2 | T07, T15, T48 | T08, T16 | T09, T17 | T18 | T07, T15, T18, T48 | T09, T16 | T10 |
-| 3 | 16-22 nov | 1, 2, 7 | P3 | T11, T14, T20 | T12, T21 | T13, T19 | T11, T22 | T13, T14, T20 | T12, T14, T19, T21, T22 | T23 |
-| 4 | 23 nov - 1 dic | 3, 4 | P4 | T27, T31 | T28, T29 | T25 | T26 | T56 | T28, T29 | T24 |
-| 5 | 2-8 dic | 4, 7 | P5 | T31* | T30, T49 | T32, T34 (opc.) | T33, T35 (opc.) | T56*, T32, T49 | T57 | - |
-| 6 | 9-13 dic | 5, 6 | P6 | T43, T46 | T37, T38, T44 | T39, T41, T43 | T40, T45 | T37, T39, T45 | T38, T41, T44, T46 | T36 |
-| 7 | 14-20 dic | 6, 7 | P1 | T42, T47 (opc.), T52 | - | T50, T53 | T51 | T51 | T50, T52 | T54, T55 |
-| Colchón | 21-31 dic | - | P2 | Correcciones, ensayo y entrega | - | - | - | - | - | - |
+| Semana | Fechas | Fases | Coordina | P1 | P2 | P3 | P4 |
+|---|---|---|---|---|---|---|---|
+| 1 | 2-8 nov | 0 | P1 | T01, T06 | T02 | T03 | T04; todos: T05 |
+| 2 | 9-15 nov | 1, 2, 7 | P2 | T07, T15, T48 | T08, T16 | T09, T17 | T18; todos: T10 |
+| 3 | 16-22 nov | 1, 2, 7 | P3 | T14, T20 | T12, T21 | T13, T19 | T11, T22; todos: T23 |
+| 4 | 23 nov - 1 dic | 3, 4 | P4 | T27, T31 (arranca) | T28, T29 | T25 | T26; todos: T24 (al inicio) |
+| 5 | 2-8 dic | 4, 7 | P1 | T31 | T30, T49 | T32, T34 (opc.) | T33, T35 (opc.) |
+| 6 | 9-13 dic | 5, 6 | P2 | T36, T46 | T37, T38, T44 | T39, T41, T43 | T40, T45 |
+| 7 | 14-20 dic | 6, 7 | P3 | T42, T47 (opc.), T52 | Apoyo y revisiones | T50, T53 | T51; todos: T54, T55 |
+| Colchón | 21-31 dic | - | P4 | Correcciones, ensayo y entrega | - | - | - |
 
-`*` = continúa de la semana anterior.
-
-**Si el calendario se aprieta, se recorta en este orden:** T47 (INT8/NPU) → T34-T35 (prior anatómico) → T31, T56 y T57 (semillas adicionales). No se recortan: split por paciente, test una sola vez, PET-only, métricas por lesión y TMTV, ni el smoke test de todos.
+**Si el calendario se aprieta, se recorta en este orden:** T47 (INT8/NPU) → T34-T35 (prior anatómico) → T31 (semilla adicional). No se recortan: split por paciente, test una sola vez, PET-only, métricas por lesión y TMTV, ni el smoke test de los cuatro.
 
 **Exámenes y otras entregas:** este calendario no los conoce. Si hay semanas con parciales, muevan las fases 3-4 (donde el cómputo es la limitación) y no las de escritura.
 
@@ -79,82 +79,78 @@ El trabajo se agrupa por **componente** (lo que estamos construyendo), y cada co
 
 | Persona | Tareas | Horas obligatorias | Horas opcionales |
 |---|---:|---:|---:|
-| P1 | 22 | 75 | 16 |
-| P2 | 19 | 80 | 0 |
-| P3 | 20 | 70 | 16 |
-| P4 | 17 | 80 | 16 |
-| P5 | 22 | 89 | 0 |
-| P6 | 24 | 86 | 0 |
+| P1 | 20 | 111 | 16 |
+| P2 | 18 | 123 | 0 |
+| P3 | 19 | 105 | 16 |
+| P4 | 16 | 110 | 16 |
 
-Esfuerzo: S ≈ 3 h, M ≈ 8 h, L ≈ 16 h (incluye esperas de entrenamiento). Es una estimación gruesa solo para balancear. Las tareas de todos reparten las horas por igual y las de varios responsables también. No incluye el tiempo semanal de coordinación (~2 h).
+Esfuerzo: S ≈ 3 h, M ≈ 8 h, L ≈ 16 h (incluye esperas de entrenamiento). Es una estimación gruesa solo para balancear. Las tareas de los cuatro reparten las horas por igual y las de varios responsables también. No incluye el tiempo semanal de coordinación (~2 h).
 
 ## Resumen de tareas
 
 | ID | Tarea | Fase | Componente | Responsable | Revisor | Esf. | Depende de |
 |---|---|---|---|---|---|---|---|
-| T01 | Crear estructura del repositorio y .gitignore | 0 | Base | P1 + P5 | P6 | S | - |
+| T01 | Crear estructura del repositorio y .gitignore | 0 | Base | P1 | P2 | S | - |
 | T02 | Entorno reproducible (laptop Windows y Kaggle/Colab) | 0 | Base | P2 | P3 | M | T01 |
 | T03 | Acordar contratos de interfaz | 0 | Base | P3 | P4 | S | T01 |
-| T04 | Convenciones de trabajo, plantillas y revisión cruzada | 0 | Base | P4 | P5 | S | T01 |
-| T05 | Cuentas de cómputo y acceso a datos | 0 | Base | Todos | cruzada | M | - |
-| T06 | Confirmar alcance y fecha de entrega con el profesor | 0 | Base | P1 + P6 | P2 | S | - |
-| T07 | Descargar FDG-PET-CT-Lesions y construir manifest.csv | 1 | Datos | P1 + P5 | P6 | L | T02, T05 |
+| T04 | Convenciones de trabajo, plantillas y revisión cruzada | 0 | Base | P4 | P1 | S | T01 |
+| T05 | Cuentas de cómputo y acceso a datos | 0 | Base | Los cuatro | cruzada | M | - |
+| T06 | Confirmar alcance y fecha de entrega con el profesor | 0 | Base | P1 | P2 | S | - |
+| T07 | Descargar FDG-PET-CT-Lesions y construir manifest.csv | 1 | Datos | P1 | P2 | L | T02, T05 |
 | T08 | Filtrar estudios de linfoma y registrar exclusiones | 1 | Datos | P2 | P3 | M | T07 |
-| T09 | QC de geometría y máscaras | 1 | Datos | P3 + P6 | P1 | M | T08 |
-| T10 | Decidir esquema de partición según el número de pacientes | 1 | Datos | Todos | cruzada | S | T08 |
-| T11 | Implementar y congelar el split por paciente | 1 | Datos | P4 + P1 | P2 | M | T09, T10 |
-| T12 | Preprocesado de PET: SUV, log1p y escalado robusto | 1 | Datos | P2 + P6 | P1 | M | T09 |
-| T13 | Preprocesado de CT y geometría: HU, resample a 3 mm y recorte de cuerpo | 1 | Datos | P3 + P5 | P6 | M | T09 |
-| T14 | Caché de volúmenes y verificación visual de 10 casos | 1 | Datos | P1 + P5 + P6 | P2 | M | T12, T13 |
-| T15 | Dataset y DataLoader MONAI | 2 | Modelo | P1 + P5 | P6 | M | T03 |
-| T16 | Aumentaciones conjuntas | 2 | Modelo | P2 + P6 | P1 | M | T15 |
+| T09 | QC de geometría y máscaras | 1 | Datos | P3 | P4 | M | T08 |
+| T10 | Decidir esquema de partición según el número de pacientes | 1 | Datos | Los cuatro | cruzada | S | T08 |
+| T11 | Implementar y congelar el split por paciente | 1 | Datos | P4 | P1 | M | T09, T10 |
+| T12 | Preprocesado de PET: SUV, log1p y escalado robusto | 1 | Datos | P2 | P3 | M | T09 |
+| T13 | Preprocesado de CT y geometría: HU, resample a 3 mm y recorte de cuerpo | 1 | Datos | P3 | P4 | M | T09 |
+| T14 | Caché de volúmenes y verificación visual de 10 casos | 1 | Datos | P1 | P2 | M | T12, T13 |
+| T15 | Dataset y DataLoader MONAI | 2 | Modelo | P1 | P2 | M | T03 |
+| T16 | Aumentaciones conjuntas | 2 | Modelo | P2 | P3 | M | T15 |
 | T17 | Modelo SegResNet compacto y variante PET-only | 2 | Modelo | P3 | P4 | S | T15 |
-| T18 | Loss y bucle de entrenamiento con reanudación | 2 | Modelo | P4 + P5 | P6 | L | T17 |
-| T19 | Inferencia sliding-window | 2 | Modelo | P3 + P6 | P1 | M | T17 |
-| T20 | Métricas de vóxel | 2 | Evaluación | P1 + P5 | P6 | M | T03 |
-| T21 | Métricas de lesión | 2 | Evaluación | P2 + P6 | P1 | L | T20 |
-| T22 | Métricas de TMTV | 2 | Evaluación | P4 + P6 | P1 | M | T20 |
-| T23 | Tests unitarios y CI: cada persona testea lo que construyó | 2 | Base | Todos | cruzada | M | T16, T19, T20, T21, T22 |
-| T24 | Overfit de 2-4 casos y smoke test en las 6 cuentas | 3 | Entrenamiento | Todos | cruzada | M | T14, T18 |
+| T18 | Loss y bucle de entrenamiento con reanudación | 2 | Modelo | P4 | P1 | L | T17 |
+| T19 | Inferencia sliding-window | 2 | Modelo | P3 | P4 | M | T17 |
+| T20 | Métricas de vóxel | 2 | Evaluación | P1 | P2 | M | T03 |
+| T21 | Métricas de lesión | 2 | Evaluación | P2 | P3 | L | T20 |
+| T22 | Métricas de TMTV | 2 | Evaluación | P4 | P1 | M | T20 |
+| T23 | Tests unitarios y CI: cada persona testea lo que construyó | 2 | Base | Los cuatro | cruzada | M | T16, T19, T20, T21, T22 |
+| T24 | Overfit de 2-4 casos y smoke test en las 4 cuentas | 3 | Entrenamiento | Los cuatro | cruzada | M | T14, T18 |
 | T25 | Entrenar baseline PET+CT | 3 | Entrenamiento | P3 | P4 | L | T24 |
-| T26 | Entrenar comparador PET-only | 3 | Entrenamiento | P4 | P5 | L | T24 |
+| T26 | Entrenar comparador PET-only | 3 | Entrenamiento | P4 | P1 | L | T24 |
 | T27 | Análisis inicial en validación: vóxel y lesión | 3 | Evaluación | P1 | P2 | M | T25, T26 |
-| T28 | Revisión de falsos positivos fisiológicos y congelar umbral/postprocesado | 3 | Evaluación | P2 + P6 | P1 | M | T25, T26 |
-| T29 | Implementar aumentación de desalineación (solo CT) | 4 | Modelo | P2 + P6 | P1 | M | T16 |
+| T28 | Revisión de falsos positivos fisiológicos y congelar umbral/postprocesado | 3 | Evaluación | P2 | P3 | M | T25, T26 |
+| T29 | Implementar aumentación de desalineación (solo CT) | 4 | Modelo | P2 | P3 | M | T16 |
 | T30 | Entrenar variante con desalineación | 4 | Entrenamiento | P2 | P3 | L | T25, T29 |
 | T31 | Semilla adicional del baseline PET+CT (variabilidad entre semillas) | 4 | Entrenamiento | P1 | P2 | L | T24 |
-| T32 | Generador de tests con desplazamiento sintético | 4 | Evaluación | P3 + P5 | P6 | M | T19 |
-| T33 | Script de estadística comparativa | 4 | Evaluación | P4 | P5 | M | T22 |
+| T32 | Generador de tests con desplazamiento sintético | 4 | Evaluación | P3 | P4 | M | T19 |
+| T33 | Script de estadística comparativa | 4 | Evaluación | P4 | P1 | M | T22 |
 | T34 | Precalcular máscaras de TotalSegmentator *(opc.)* | 4 | Modelo | P3 | P4 | L | T14 |
-| T35 | Entrenar variante con prior anatómico *(opc.)* | 4 | Entrenamiento | P4 | P5 | L | T25, T34 |
-| T36 | Congelar todo y ejecutar el test una sola vez | 5 | Evaluación | Todos | cruzada | M | T28, T30 |
-| T37 | Métricas completas de vóxel y lesión en test | 5 | Evaluación | P2 + P5 | P6 | M | T36 |
-| T38 | Robustez bajo desplazamiento sintético | 5 | Evaluación | P2 + P6 | P1 | M | T32, T36 |
-| T39 | TMTV en test: Bland-Altman e ICC | 5 | Evaluación | P3 + P5 | P6 | M | T36 |
-| T40 | Estadística comparativa sobre test | 5 | Evaluación | P4 | P5 | L | T31, T33, T37, T39, T56, T57 |
-| T41 | Análisis de errores por tamaño y órgano | 5 | Evaluación | P3 + P6 | P1 | M | T37 |
+| T35 | Entrenar variante con prior anatómico *(opc.)* | 4 | Entrenamiento | P4 | P1 | L | T25, T34 |
+| T36 | Congelar todo y ejecutar el test una sola vez | 5 | Evaluación | P1 | P2 | M | T28, T30 |
+| T37 | Métricas completas de vóxel y lesión en test | 5 | Evaluación | P2 | P3 | M | T36 |
+| T38 | Robustez bajo desplazamiento sintético | 5 | Evaluación | P2 | P3 | M | T32, T36 |
+| T39 | TMTV en test: Bland-Altman e ICC | 5 | Evaluación | P3 | P4 | M | T36 |
+| T40 | Estadística comparativa sobre test | 5 | Evaluación | P4 | P1 | L | T31, T33, T37, T39 |
+| T41 | Análisis de errores por tamaño y órgano | 5 | Evaluación | P3 | P4 | M | T37 |
 | T42 | Cierre de hipótesis H1-H4 | 5 | Evaluación | P1 | P2 | S | T38, T40, T41 |
-| T43 | Exportar a ONNX y validar equivalencia | 6 | Despliegue | P3 + P1 | P2 | M | T36 |
-| T44 | Benchmark de inferencia en CPU | 6 | Despliegue | P2 + P6 | P1 | M | T43 |
-| T45 | Script de inferencia de demostración (ONNX → máscara + TMTV) | 6 | Despliegue | P4 + P5 | P6 | M | T43 |
-| T46 | Documentar despliegue | 6 | Despliegue | P1 + P6 | P2 | M | T44 |
+| T43 | Exportar a ONNX y validar equivalencia | 6 | Despliegue | P3 | P4 | M | T36 |
+| T44 | Benchmark de inferencia en CPU | 6 | Despliegue | P2 | P3 | M | T43 |
+| T45 | Script de inferencia de demostración (ONNX → máscara + TMTV) | 6 | Despliegue | P4 | P1 | M | T43 |
+| T46 | Documentar despliegue | 6 | Despliegue | P1 | P2 | M | T44 |
 | T47 | Cuantización INT8 y prueba en NPU *(opc.)* | 6 | Despliegue | P1 | P2 | L | T44 |
-| T48 | Esqueleto del informe y adaptación del estado del arte | 7 | Informe | P1 + P5 | P6 | M | T03 |
-| T49 | Sección de datos y preprocesado | 7 | Informe | P2 + P5 | P6 | M | T11, T14 |
-| T50 | Sección de modelo y entrenamiento | 7 | Informe | P3 + P6 | P1 | M | T18, T25 |
-| T51 | Sección de evaluación, resultados y figuras | 7 | Informe | P4 + P5 | P6 | L | T40, T41 |
-| T52 | Limitaciones y trabajo futuro | 7 | Informe | P1 + P6 | P2 | S | T42 |
+| T48 | Esqueleto del informe y adaptación del estado del arte | 7 | Informe | P1 | P2 | M | T03 |
+| T49 | Sección de datos y preprocesado | 7 | Informe | P2 | P3 | M | T11, T14 |
+| T50 | Sección de modelo y entrenamiento | 7 | Informe | P3 | P4 | M | T18, T25 |
+| T51 | Sección de evaluación, resultados y figuras | 7 | Informe | P4 | P1 | L | T40, T41 |
+| T52 | Limitaciones y trabajo futuro | 7 | Informe | P1 | P2 | S | T42 |
 | T53 | Reproducibilidad desde cero | 7 | Informe | P3 | P4 | M | T44, T45 |
-| T54 | Verificación cruzada final del informe | 7 | Informe | Todos | cruzada | M | T51, T52 |
-| T55 | Entrega y presentación | 7 | Informe | Todos | cruzada | M | T54 |
-| T56 | Semilla adicional del comparador PET-only | 4 | Entrenamiento | P5 | P6 | L | T24 |
-| T57 | Entrenar variante con desalineación, semilla adicional | 4 | Entrenamiento | P6 | P1 | L | T25, T29 |
+| T54 | Verificación cruzada final del informe | 7 | Informe | Los cuatro | cruzada | M | T51, T52 |
+| T55 | Entrega y presentación | 7 | Informe | Los cuatro | cruzada | M | T54 |
 
 ## Etiquetas y milestones
 
 **Milestones:** `Fase 0 - Arranque`, `Fase 1 - Datos`, `Fase 2 - Código base`, `Fase 3 - Baselines`, `Fase 4 - Mejoras`, `Fase 5 - Evaluación`, `Fase 6 - Despliegue`, `Fase 7 - Informe y entrega`.
 
-**Etiquetas:** `datos`, `modelado`, `evaluacion`, `estadistica`, `despliegue`, `redaccion`, `entrenamiento`, `calidad`, `decision`, `infra`, `setup`, `diseno`, `entrega`, `opcional`, `bloqueado`, `todos`, `fase-0`, `fase-1`, `fase-2`, `fase-3`, `fase-4`, `fase-5`, `fase-6`, `fase-7`, `P1`, `P2`, `P3`, `P4`, `P5`, `P6`. Las etiquetas `P1`-`P6` indican responsable y sirven para filtrar el tablero.
+**Etiquetas:** `datos`, `modelado`, `evaluacion`, `estadistica`, `despliegue`, `redaccion`, `entrenamiento`, `calidad`, `decision`, `infra`, `setup`, `diseno`, `entrega`, `opcional`, `bloqueado`, `todos`, `fase-0`, `fase-1`, `fase-2`, `fase-3`, `fase-4`, `fase-5`, `fase-6`, `fase-7`, `P1`, `P2`, `P3`, `P4`. Las etiquetas `P1`-`P4` indican responsable y sirven para filtrar el tablero.
 
 **Definition of Done de cualquier issue:** código en `main` vía PR revisado por el revisor asignado, tests pasando, salida documentada (archivo en `results/` o sección en `docs/`) y issue cerrado con enlace al PR.
 
@@ -167,14 +163,14 @@ Requisitos: Python 3.10+, [GitHub CLI](https://cli.github.com) y haber ejecutado
 python create_issues.py --dry-run
 
 # 2) Crear etiquetas, milestones e issues (desde dentro del clon del repo)
-python create_issues.py --users "P1=u1,P2=u2,P3=u3,P4=u4,P5=u5,P6=u6"
+python create_issues.py --users "P1=usuario1,P2=usuario2,P3=usuario3,P4=usuario4"
 
 # 3) Contra otro repo
-python create_issues.py --repo owner/nombre --users "P1=..,P2=..,P3=..,P4=..,P5=..,P6=.."
+python create_issues.py --repo owner/nombre --users "P1=..,P2=..,P3=..,P4=.."
 ```
 
 - Es **idempotente**: si un issue con el mismo prefijo `[Txx]` ya existe, lo salta; si se corta a mitad, se vuelve a ejecutar.
-- Las tareas de todos se asignan a las seis personas.
+- Las tareas de los cuatro se asignan a las cuatro personas.
 - Si un usuario no es colaborador del repo, el script crea el issue sin asignar y lo avisa.
 - Las dependencias se escriben como `#número (Txx)` con el número real del issue en GitHub.
 - Los `- [ ]` de cada issue se convierten en checklist con barra de progreso.
@@ -188,8 +184,8 @@ python create_issues.py --repo owner/nombre --users "P1=..,P2=..,P3=..,P4=..,P5=
 
 ### T01 · Crear estructura del repositorio y .gitignore
 
-**Componente:** Base · **Responsable:** P1 + P5 · **Revisor:** P6 · **Esfuerzo:** S (~3 h)  
-**Etiquetas:** `fase-0` `setup` `P1` `P5`  
+**Componente:** Base · **Responsable:** P1 · **Revisor:** P2 · **Esfuerzo:** S (~3 h)  
+**Etiquetas:** `fase-0` `setup` `P1`  
 
 Dejar el repo con la estructura acordada para que todos trabajen sobre el mismo esqueleto.
 
@@ -215,30 +211,30 @@ Un entorno con versiones fijadas que funcione igual en las laptops y en Kaggle/C
 **Etiquetas:** `fase-0` `diseno` `P3`  
 **Depende de:** T01
 
-Fijar los formatos de intercambio para que los seis trabajen en paralelo sin bloquearse.
+Fijar los formatos de intercambio para que los cuatro trabajen en paralelo sin bloquearse.
 
 - [ ] docs/contratos.md con: manifest.csv, splits.json (IDs de paciente), volúmenes procesados (3 mm, SUV original aparte), predicciones NIfTI, CSV de métricas por paciente y YAML por experimento
-- [ ] Revisado y aprobado por los seis (cada uno confirma la parte que va a producir)
+- [ ] Revisado y aprobado por los cuatro (cada uno confirma la parte que va a producir)
 
 ### T04 · Convenciones de trabajo, plantillas y revisión cruzada
 
-**Componente:** Base · **Responsable:** P4 · **Revisor:** P5 · **Esfuerzo:** S (~3 h)  
+**Componente:** Base · **Responsable:** P4 · **Revisor:** P1 · **Esfuerzo:** S (~3 h)  
 **Etiquetas:** `fase-0` `setup` `P4`  
 **Depende de:** T01
 
 Reglas mínimas para no pisarse y para que todos conozcan todo el código.
 
 - [ ] Plantillas de issue y de PR
-- [ ] Ramas feat/<tema>; PR con revisión obligatoria del revisor asignado en el issue (el siguiente en la lista P1→P2→P3→P4→P5→P6→P1); si el repo privado no permite proteger main, regla acordada de no hacer push directo
+- [ ] Ramas feat/<tema>; PR con revisión obligatoria del revisor asignado en el issue (el siguiente en la lista P1→P2→P3→P4→P1); si el repo privado no permite proteger main, regla acordada de no hacer push directo
 - [ ] Rotación semanal del coordinador documentada en docs/trabajo_en_equipo.md
 - [ ] Utilidad set_seed() compartida con semilla 42
 
 ### T05 · Cuentas de cómputo y acceso a datos
 
-**Componente:** Base · **Responsable:** Todos · **Revisión:** cruzada · **Esfuerzo:** M (~8 h)  
+**Componente:** Base · **Responsable:** Los cuatro · **Revisión:** cruzada · **Esfuerzo:** M (~8 h)  
 **Etiquetas:** `fase-0` `infra` `todos`  
 
-Cada integrante prepara su propio acceso a GPU gratuita y a los datos: los seis van a entrenar.
+Cada integrante prepara su propio acceso a GPU gratuita y a los datos: los cuatro van a entrenar.
 
 - [ ] Cuenta de Kaggle y/o Colab operativa con GPU habilitada (comprobar que la verificación de cuenta funciona desde su conexión)
 - [ ] Acceso a TCIA / FDG-PET-CT-Lesions verificado
@@ -247,8 +243,8 @@ Cada integrante prepara su propio acceso a GPU gratuita y a los datos: los seis 
 
 ### T06 · Confirmar alcance y fecha de entrega con el profesor
 
-**Componente:** Base · **Responsable:** P1 + P6 · **Revisor:** P2 · **Esfuerzo:** S (~3 h)  
-**Etiquetas:** `fase-0` `decision` `P1` `P6`  
+**Componente:** Base · **Responsable:** P1 · **Revisor:** P2 · **Esfuerzo:** S (~3 h)  
+**Etiquetas:** `fase-0` `decision` `P1`  
 
 Validar el alcance antes de invertir cómputo.
 
@@ -264,8 +260,8 @@ Validar el alcance antes de invertir cómputo.
 
 ### T07 · Descargar FDG-PET-CT-Lesions y construir manifest.csv
 
-**Componente:** Datos · **Responsable:** P1 + P5 · **Revisor:** P6 · **Esfuerzo:** L (~16 h)  
-**Etiquetas:** `fase-1` `datos` `P1` `P5`  
+**Componente:** Datos · **Responsable:** P1 · **Revisor:** P2 · **Esfuerzo:** L (~16 h)  
+**Etiquetas:** `fase-1` `datos` `P1`  
 **Depende de:** T02, T05
 
 Obtener los datos y un manifiesto único con la lista de estudios.
@@ -290,8 +286,8 @@ Quedarse con los casos de linfoma y contar pacientes reales.
 
 ### T09 · QC de geometría y máscaras
 
-**Componente:** Datos · **Responsable:** P3 + P6 · **Revisor:** P1 · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-1` `datos` `calidad` `P3` `P6`  
+**Componente:** Datos · **Responsable:** P3 · **Revisor:** P4 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-1` `datos` `calidad` `P3`  
 **Depende de:** T08
 
 Detectar estudios inutilizables antes de entrenar.
@@ -301,20 +297,20 @@ Detectar estudios inutilizables antes de entrenar.
 
 ### T10 · Decidir esquema de partición según el número de pacientes
 
-**Componente:** Datos · **Responsable:** Todos · **Revisión:** cruzada · **Esfuerzo:** S (~3 h)  
+**Componente:** Datos · **Responsable:** Los cuatro · **Revisión:** cruzada · **Esfuerzo:** S (~3 h)  
 **Etiquetas:** `fase-1` `decision` `todos`  
 **Depende de:** T08
 
-Reunión corta de los seis: el esquema depende de cuántos pacientes de linfoma haya de verdad.
+Reunión corta de los cuatro: el esquema depende de cuántos pacientes de linfoma haya de verdad.
 
 - [ ] Menos de 120 pacientes: 5-fold CV para desarrollo + hold-out mínimo de test; 120 o más: 70/15/15
-- [ ] Si se elige 5-fold: acordar cómo se reducen épocas/pasos y cómo se reparten los folds entre los seis
+- [ ] Si se elige 5-fold: acordar cómo se reducen épocas/pasos y cómo se reparten los folds entre los cuatro
 - [ ] Decisión documentada en docs/decisiones.md
 
 ### T11 · Implementar y congelar el split por paciente
 
-**Componente:** Datos · **Responsable:** P4 + P1 · **Revisor:** P2 · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-1` `datos` `P4` `P1`  
+**Componente:** Datos · **Responsable:** P4 · **Revisor:** P1 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-1` `datos` `P4`  
 **Depende de:** T09, T10
 
 Partición sin fuga, versionada. Desde aquí no se cambia.
@@ -325,8 +321,8 @@ Partición sin fuga, versionada. Desde aquí no se cambia.
 
 ### T12 · Preprocesado de PET: SUV, log1p y escalado robusto
 
-**Componente:** Datos · **Responsable:** P2 + P6 · **Revisor:** P1 · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-1` `datos` `P2` `P6`  
+**Componente:** Datos · **Responsable:** P2 · **Revisor:** P3 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-1` `datos` `P2`  
 **Depende de:** T09
 
 Normalización de la modalidad metabólica.
@@ -337,8 +333,8 @@ Normalización de la modalidad metabólica.
 
 ### T13 · Preprocesado de CT y geometría: HU, resample a 3 mm y recorte de cuerpo
 
-**Componente:** Datos · **Responsable:** P3 + P5 · **Revisor:** P6 · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-1` `datos` `P3` `P5`  
+**Componente:** Datos · **Responsable:** P3 · **Revisor:** P4 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-1` `datos` `P3`  
 **Depende de:** T09
 
 Normalización anatómica y espacio común.
@@ -350,8 +346,8 @@ Normalización anatómica y espacio común.
 
 ### T14 · Caché de volúmenes y verificación visual de 10 casos
 
-**Componente:** Datos · **Responsable:** P1 + P5 + P6 · **Revisor:** P2 · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-1` `datos` `calidad` `P1` `P5` `P6`  
+**Componente:** Datos · **Responsable:** P1 · **Revisor:** P2 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-1` `datos` `calidad` `P1`  
 **Depende de:** T12, T13
 
 Evitar repetir el preprocesado en cada sesión de GPU y comprobar que todo está bien alineado.
@@ -369,8 +365,8 @@ Evitar repetir el preprocesado en cada sesión de GPU y comprobar que todo está
 
 ### T15 · Dataset y DataLoader MONAI
 
-**Componente:** Modelo · **Responsable:** P1 + P5 · **Revisor:** P6 · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-2` `modelado` `P1` `P5`  
+**Componente:** Modelo · **Responsable:** P1 · **Revisor:** P2 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-2` `modelado` `P1`  
 **Depende de:** T03
 
 Cargar parches 3D desde splits.json y manifest.
@@ -380,8 +376,8 @@ Cargar parches 3D desde splits.json y manifest.
 
 ### T16 · Aumentaciones conjuntas
 
-**Componente:** Modelo · **Responsable:** P2 + P6 · **Revisor:** P1 · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-2` `modelado` `P2` `P6`  
+**Componente:** Modelo · **Responsable:** P2 · **Revisor:** P3 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-2` `modelado` `P2`  
 **Depende de:** T15
 
 Aumentaciones que mantienen PET, CT y máscara alineados.
@@ -402,8 +398,8 @@ Baseline y su ablación con la misma capacidad.
 
 ### T18 · Loss y bucle de entrenamiento con reanudación
 
-**Componente:** Modelo · **Responsable:** P4 + P5 · **Revisor:** P6 · **Esfuerzo:** L (~16 h)  
-**Etiquetas:** `fase-2` `modelado` `entrenamiento` `P4` `P5`  
+**Componente:** Modelo · **Responsable:** P4 · **Revisor:** P1 · **Esfuerzo:** L (~16 h)  
+**Etiquetas:** `fase-2` `modelado` `entrenamiento` `P4`  
 **Depende de:** T17
 
 Entrenamiento robusto a cortes de sesión.
@@ -415,8 +411,8 @@ Entrenamiento robusto a cortes de sesión.
 
 ### T19 · Inferencia sliding-window
 
-**Componente:** Modelo · **Responsable:** P3 + P6 · **Revisor:** P1 · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-2` `modelado` `evaluacion` `P3` `P6`  
+**Componente:** Modelo · **Responsable:** P3 · **Revisor:** P4 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-2` `modelado` `evaluacion` `P3`  
 **Depende de:** T17
 
 Pasar de parches a estudios completos.
@@ -426,8 +422,8 @@ Pasar de parches a estudios completos.
 
 ### T20 · Métricas de vóxel
 
-**Componente:** Evaluación · **Responsable:** P1 + P5 · **Revisor:** P6 · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-2` `evaluacion` `P1` `P5`  
+**Componente:** Evaluación · **Responsable:** P1 · **Revisor:** P2 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-2` `evaluacion` `P1`  
 **Depende de:** T03
 
 Dice, FPV y FNV correctos y probados.
@@ -438,8 +434,8 @@ Dice, FPV y FNV correctos y probados.
 
 ### T21 · Métricas de lesión
 
-**Componente:** Evaluación · **Responsable:** P2 + P6 · **Revisor:** P1 · **Esfuerzo:** L (~16 h)  
-**Etiquetas:** `fase-2` `evaluacion` `P2` `P6`  
+**Componente:** Evaluación · **Responsable:** P2 · **Revisor:** P3 · **Esfuerzo:** L (~16 h)  
+**Etiquetas:** `fase-2` `evaluacion` `P2`  
 **Depende de:** T20
 
 Detección por lesión con criterio declarado.
@@ -451,8 +447,8 @@ Detección por lesión con criterio declarado.
 
 ### T22 · Métricas de TMTV
 
-**Componente:** Evaluación · **Responsable:** P4 + P6 · **Revisor:** P1 · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-2` `evaluacion` `estadistica` `P4` `P6`  
+**Componente:** Evaluación · **Responsable:** P4 · **Revisor:** P1 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-2` `evaluacion` `estadistica` `P4`  
 **Depende de:** T20
 
 Acuerdo de TMTV frente a la referencia.
@@ -463,7 +459,7 @@ Acuerdo de TMTV frente a la referencia.
 
 ### T23 · Tests unitarios y CI: cada persona testea lo que construyó
 
-**Componente:** Base · **Responsable:** Todos · **Revisión:** cruzada · **Esfuerzo:** M (~8 h)  
+**Componente:** Base · **Responsable:** Los cuatro · **Revisión:** cruzada · **Esfuerzo:** M (~8 h)  
 **Etiquetas:** `fase-2` `calidad` `todos`  
 **Depende de:** T16, T19, T20, T21, T22
 
@@ -479,13 +475,13 @@ Red de seguridad antes de gastar horas de GPU.
 **Milestone:** `Fase 3 - Baselines` · **Inicio:** 2026-11-23 · **Fecha límite:** 2026-12-01  
 **Objetivo:** Baseline PET+CT y comparador PET-only entrenados; umbral y postprocesado congelados.
 
-### T24 · Overfit de 2-4 casos y smoke test en las 6 cuentas
+### T24 · Overfit de 2-4 casos y smoke test en las 4 cuentas
 
-**Componente:** Entrenamiento · **Responsable:** Todos · **Revisión:** cruzada · **Esfuerzo:** M (~8 h)  
+**Componente:** Entrenamiento · **Responsable:** Los cuatro · **Revisión:** cruzada · **Esfuerzo:** M (~8 h)  
 **Etiquetas:** `fase-3` `entrenamiento` `todos`  
 **Depende de:** T14, T18
 
-Comprobar que el pipeline aprende y que funciona igual en las seis cuentas antes de gastar horas completas.
+Comprobar que el pipeline aprende y que funciona igual en las cuatro cuentas antes de gastar horas completas.
 
 - [ ] Cada integrante corre 10-20 épocas en su propia cuenta de Kaggle/Colab y anota tiempo por época y VRAM
 - [ ] La loss desciende y el modelo recupera las lesiones del microconjunto
@@ -505,7 +501,7 @@ Modelo de referencia del proyecto.
 
 ### T26 · Entrenar comparador PET-only
 
-**Componente:** Entrenamiento · **Responsable:** P4 · **Revisor:** P5 · **Esfuerzo:** L (~16 h)  
+**Componente:** Entrenamiento · **Responsable:** P4 · **Revisor:** P1 · **Esfuerzo:** L (~16 h)  
 **Etiquetas:** `fase-3` `entrenamiento` `P4`  
 **Depende de:** T24
 
@@ -527,8 +523,8 @@ Primera lectura de resultados, solo sobre validación.
 
 ### T28 · Revisión de falsos positivos fisiológicos y congelar umbral/postprocesado
 
-**Componente:** Evaluación · **Responsable:** P2 + P6 · **Revisor:** P1 · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-3` `evaluacion` `calidad` `P2` `P6`  
+**Componente:** Evaluación · **Responsable:** P2 · **Revisor:** P3 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-3` `evaluacion` `calidad` `P2`  
 **Depende de:** T25, T26
 
 Entender los errores y fijar el postprocesado antes de tocar el test.
@@ -546,8 +542,8 @@ Entender los errores y fijar el postprocesado antes de tocar el test.
 
 ### T29 · Implementar aumentación de desalineación (solo CT)
 
-**Componente:** Modelo · **Responsable:** P2 + P6 · **Revisor:** P1 · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-4` `modelado` `P2` `P6`  
+**Componente:** Modelo · **Responsable:** P2 · **Revisor:** P3 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-4` `modelado` `P2`  
 **Depende de:** T16
 
 Mejora principal de robustez.
@@ -580,8 +576,8 @@ Estimar cuánto varía el resultado solo por la semilla, para no sobreinterpreta
 
 ### T32 · Generador de tests con desplazamiento sintético
 
-**Componente:** Evaluación · **Responsable:** P3 + P5 · **Revisor:** P6 · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-4` `evaluacion` `P3` `P5`  
+**Componente:** Evaluación · **Responsable:** P3 · **Revisor:** P4 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-4` `evaluacion` `P3`  
 **Depende de:** T19
 
 Medir robustez de forma controlada.
@@ -591,7 +587,7 @@ Medir robustez de forma controlada.
 
 ### T33 · Script de estadística comparativa
 
-**Componente:** Evaluación · **Responsable:** P4 · **Revisor:** P5 · **Esfuerzo:** M (~8 h)  
+**Componente:** Evaluación · **Responsable:** P4 · **Revisor:** P1 · **Esfuerzo:** M (~8 h)  
 **Etiquetas:** `fase-4` `estadistica` `P4`  
 **Depende de:** T22
 
@@ -614,7 +610,7 @@ Segunda mejora. Es de lo primero que se recorta si el calendario aprieta.
 
 ### T35 · Entrenar variante con prior anatómico *(opcional)*
 
-**Componente:** Entrenamiento · **Responsable:** P4 · **Revisor:** P5 · **Esfuerzo:** L (~16 h)  
+**Componente:** Entrenamiento · **Responsable:** P4 · **Revisor:** P1 · **Esfuerzo:** L (~16 h)  
 **Etiquetas:** `fase-4` `entrenamiento` `opcional` `P4`  
 **Depende de:** T25, T34
 
@@ -622,28 +618,6 @@ Comparar contra el baseline.
 
 - [ ] configs/anatomic_prior.yaml versionado
 - [ ] Logs y checkpoint guardados; comparación con el baseline en validación
-
-### T56 · Semilla adicional del comparador PET-only
-
-**Componente:** Entrenamiento · **Responsable:** P5 · **Revisor:** P6 · **Esfuerzo:** L (~16 h)  
-**Etiquetas:** `fase-4` `entrenamiento` `P5`  
-**Depende de:** T24
-
-Variabilidad entre semillas del comparador, lanzada desde otra cuenta. Se recorta justo después de las opcionales si el cómputo falla.
-
-- [ ] Mismo config que T26 con semilla 43
-- [ ] Logs y checkpoint guardados; resultados disponibles para T40
-
-### T57 · Entrenar variante con desalineación, semilla adicional
-
-**Componente:** Entrenamiento · **Responsable:** P6 · **Revisor:** P1 · **Esfuerzo:** L (~16 h)  
-**Etiquetas:** `fase-4` `entrenamiento` `P6`  
-**Depende de:** T25, T29
-
-Variabilidad entre semillas de la variante con desalineación.
-
-- [ ] Mismo config que T30 con semilla 43
-- [ ] Logs y checkpoint guardados; resultados disponibles para T40
 
 ---
 
@@ -654,20 +628,20 @@ Variabilidad entre semillas de la variante con desalineación.
 
 ### T36 · Congelar todo y ejecutar el test una sola vez
 
-**Componente:** Evaluación · **Responsable:** Todos · **Revisión:** cruzada · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-5` `evaluacion` `decision`  
+**Componente:** Evaluación · **Responsable:** P1 · **Revisor:** P2 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-5` `evaluacion` `decision` `P1`  
 **Depende de:** T28, T30
 
-Momento crítico de validez: el test se usa una vez. Los seis presentes (reunión corta).
+Momento crítico de validez: el test se usa una vez. Los cuatro presentes (reunión corta).
 
-- [ ] Confirmación escrita en el issue, firmada por los seis, de que arquitectura, umbral y postprocesado están congelados
+- [ ] Confirmación escrita en el issue, firmada por los cuatro, de que arquitectura, umbral y postprocesado están congelados
 - [ ] Inferencia en test de todas las variantes
 - [ ] Predicciones y métricas guardadas en results/
 
 ### T37 · Métricas completas de vóxel y lesión en test
 
-**Componente:** Evaluación · **Responsable:** P2 + P5 · **Revisor:** P6 · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-5` `evaluacion` `P2` `P5`  
+**Componente:** Evaluación · **Responsable:** P2 · **Revisor:** P3 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-5` `evaluacion` `P2`  
 **Depende de:** T36
 
 Todas las métricas de vóxel y lesión sobre el test.
@@ -677,8 +651,8 @@ Todas las métricas de vóxel y lesión sobre el test.
 
 ### T38 · Robustez bajo desplazamiento sintético
 
-**Componente:** Evaluación · **Responsable:** P2 + P6 · **Revisor:** P1 · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-5` `evaluacion` `P2` `P6`  
+**Componente:** Evaluación · **Responsable:** P2 · **Revisor:** P3 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-5` `evaluacion` `P2`  
 **Depende de:** T32, T36
 
 Evaluar H2: baseline y variante en test limpio, leve y moderado.
@@ -688,8 +662,8 @@ Evaluar H2: baseline y variante en test limpio, leve y moderado.
 
 ### T39 · TMTV en test: Bland-Altman e ICC
 
-**Componente:** Evaluación · **Responsable:** P3 + P5 · **Revisor:** P6 · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-5` `evaluacion` `estadistica` `P3` `P5`  
+**Componente:** Evaluación · **Responsable:** P3 · **Revisor:** P4 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-5` `evaluacion` `estadistica` `P3`  
 **Depende de:** T36
 
 Evaluar H4 a nivel de paciente.
@@ -699,9 +673,9 @@ Evaluar H4 a nivel de paciente.
 
 ### T40 · Estadística comparativa sobre test
 
-**Componente:** Evaluación · **Responsable:** P4 · **Revisor:** P5 · **Esfuerzo:** L (~16 h)  
+**Componente:** Evaluación · **Responsable:** P4 · **Revisor:** P1 · **Esfuerzo:** L (~16 h)  
 **Etiquetas:** `fase-5` `estadistica` `P4`  
-**Depende de:** T31, T33, T37, T39, T56, T57
+**Depende de:** T31, T33, T37, T39
 
 Ejecutar el script de T33 con los resultados de test.
 
@@ -711,8 +685,8 @@ Ejecutar el script de T33 con los resultados de test.
 
 ### T41 · Análisis de errores por tamaño y órgano
 
-**Componente:** Evaluación · **Responsable:** P3 + P6 · **Revisor:** P1 · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-5` `evaluacion` `redaccion` `P3` `P6`  
+**Componente:** Evaluación · **Responsable:** P3 · **Revisor:** P4 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-5` `evaluacion` `redaccion` `P3`  
 **Depende de:** T37
 
 Entender por qué falla el modelo.
@@ -740,8 +714,8 @@ Decir con honestidad qué se confirmó y qué no.
 
 ### T43 · Exportar a ONNX y validar equivalencia
 
-**Componente:** Despliegue · **Responsable:** P3 + P1 · **Revisor:** P2 · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-6` `despliegue` `P3` `P1`  
+**Componente:** Despliegue · **Responsable:** P3 · **Revisor:** P4 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-6` `despliegue` `P3`  
 **Depende de:** T36
 
 Exportación verificable del modelo final.
@@ -752,8 +726,8 @@ Exportación verificable del modelo final.
 
 ### T44 · Benchmark de inferencia en CPU
 
-**Componente:** Despliegue · **Responsable:** P2 + P6 · **Revisor:** P1 · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-6` `despliegue` `P2` `P6`  
+**Componente:** Despliegue · **Responsable:** P2 · **Revisor:** P3 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-6` `despliegue` `P2`  
 **Depende de:** T43
 
 Costo real de inferencia en una laptop.
@@ -763,8 +737,8 @@ Costo real de inferencia en una laptop.
 
 ### T45 · Script de inferencia de demostración (ONNX → máscara + TMTV)
 
-**Componente:** Despliegue · **Responsable:** P4 + P5 · **Revisor:** P6 · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-6` `despliegue` `P4` `P5`  
+**Componente:** Despliegue · **Responsable:** P4 · **Revisor:** P1 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-6` `despliegue` `P4`  
 **Depende de:** T43
 
 Una forma sencilla de usar el modelo final sobre un estudio nuevo.
@@ -774,8 +748,8 @@ Una forma sencilla de usar el modelo final sobre un estudio nuevo.
 
 ### T46 · Documentar despliegue
 
-**Componente:** Despliegue · **Responsable:** P1 + P6 · **Revisor:** P2 · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-6` `despliegue` `redaccion` `P1` `P6`  
+**Componente:** Despliegue · **Responsable:** P1 · **Revisor:** P2 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-6` `despliegue` `redaccion` `P1`  
 **Depende de:** T44
 
 Dejar por escrito lo medido, sin prometer lo que no se midió.
@@ -805,8 +779,8 @@ Extensión. Solo se afirma lo que se mida.
 
 ### T48 · Esqueleto del informe y adaptación del estado del arte
 
-**Componente:** Informe · **Responsable:** P1 + P5 · **Revisor:** P6 · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-7` `redaccion` `P1` `P5`  
+**Componente:** Informe · **Responsable:** P1 · **Revisor:** P2 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-7` `redaccion` `P1`  
 **Depende de:** T03
 
 Empezar a escribir temprano; el estado del arte ya está hecho.
@@ -816,8 +790,8 @@ Empezar a escribir temprano; el estado del arte ya está hecho.
 
 ### T49 · Sección de datos y preprocesado
 
-**Componente:** Informe · **Responsable:** P2 + P5 · **Revisor:** P6 · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-7` `redaccion` `P2` `P5`  
+**Componente:** Informe · **Responsable:** P2 · **Revisor:** P3 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-7` `redaccion` `P2`  
 **Depende de:** T11, T14
 
 Describir exactamente lo que se hizo con los datos.
@@ -827,8 +801,8 @@ Describir exactamente lo que se hizo con los datos.
 
 ### T50 · Sección de modelo y entrenamiento
 
-**Componente:** Informe · **Responsable:** P3 + P6 · **Revisor:** P1 · **Esfuerzo:** M (~8 h)  
-**Etiquetas:** `fase-7` `redaccion` `P3` `P6`  
+**Componente:** Informe · **Responsable:** P3 · **Revisor:** P4 · **Esfuerzo:** M (~8 h)  
+**Etiquetas:** `fase-7` `redaccion` `P3`  
 **Depende de:** T18, T25
 
 Describir exactamente cómo se construyó y entrenó el modelo.
@@ -838,8 +812,8 @@ Describir exactamente cómo se construyó y entrenó el modelo.
 
 ### T51 · Sección de evaluación, resultados y figuras
 
-**Componente:** Informe · **Responsable:** P4 + P5 · **Revisor:** P6 · **Esfuerzo:** L (~16 h)  
-**Etiquetas:** `fase-7` `redaccion` `evaluacion` `P4` `P5`  
+**Componente:** Informe · **Responsable:** P4 · **Revisor:** P1 · **Esfuerzo:** L (~16 h)  
+**Etiquetas:** `fase-7` `redaccion` `evaluacion` `P4`  
 **Depende de:** T40, T41
 
 Resultados trazables a archivos.
@@ -849,8 +823,8 @@ Resultados trazables a archivos.
 
 ### T52 · Limitaciones y trabajo futuro
 
-**Componente:** Informe · **Responsable:** P1 + P6 · **Revisor:** P2 · **Esfuerzo:** S (~3 h)  
-**Etiquetas:** `fase-7` `redaccion` `P1` `P6`  
+**Componente:** Informe · **Responsable:** P1 · **Revisor:** P2 · **Esfuerzo:** S (~3 h)  
+**Etiquetas:** `fase-7` `redaccion` `P1`  
 **Depende de:** T42
 
 Honestidad metodológica.
@@ -874,19 +848,19 @@ Que otra persona pueda repetirlo.
 
 ### T54 · Verificación cruzada final del informe
 
-**Componente:** Informe · **Responsable:** Todos · **Revisión:** cruzada · **Esfuerzo:** M (~8 h)  
+**Componente:** Informe · **Responsable:** Los cuatro · **Revisión:** cruzada · **Esfuerzo:** M (~8 h)  
 **Etiquetas:** `fase-7` `calidad` `todos`  
 **Depende de:** T51, T52
 
-Cada persona verifica el trabajo de otra (anillo P1→P2→P3→P4→P5→P6→P1).
+Cada persona verifica el trabajo de otra (anillo P1→P2→P3→P4→P1).
 
 - [ ] Cada cifra de la sección verificada coincide con su archivo de results/
-- [ ] Cada integrante abre 2-3 referencias al azar de la sección que revisa y comprueba que dicen lo que se les atribuye
+- [ ] Cada integrante abre 3-4 referencias al azar de la sección que revisa y comprueba que dicen lo que se les atribuye
 - [ ] Revisión del informe con /review del repo de skills de MatCom, si está instalado
 
 ### T55 · Entrega y presentación
 
-**Componente:** Informe · **Responsable:** Todos · **Revisión:** cruzada · **Esfuerzo:** M (~8 h)  
+**Componente:** Informe · **Responsable:** Los cuatro · **Revisión:** cruzada · **Esfuerzo:** M (~8 h)  
 **Etiquetas:** `fase-7` `entrega` `todos`  
 **Depende de:** T54
 
