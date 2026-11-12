@@ -1,7 +1,7 @@
 # Roadmap, pipeline y tareas del proyecto
 
 **Proyecto:** Optimización de la detección y evaluación de lesiones en linfomas mediante PET/CT
-**Estado:** plan de trabajo sin roles fijos. Las tareas, fechas y responsables salen de `create_issues.py` (misma fuente que `issues_tareas.md`).
+**Estado:** plan de trabajo sin roles fijos. Las tareas, fechas y responsables salen de `scripts/create_issues.py` (misma fuente que `issues_tareas.md`).
 
 ---
 
@@ -9,7 +9,7 @@
 
 **Objetivo:** construir y evaluar un baseline 3D de segmentación binaria de lesiones de linfoma en FDG-PET/CT basal, con una mejora principal de robustez y una mejora opcional, y evaluarlo en tres niveles (vóxel, lesión y paciente/TMTV).
 
-**Hipótesis a contrastar** (de `gaps_y_oportunidades.md`):
+**Hipótesis a contrastar** (de `../metodologia/gaps_y_oportunidades.md`):
 
 - **H1.** SegResNet 3D con PET+CT supera a PET-only en Dice y FNV sin aumentar excesivamente el FPV.
 - **H2.** La aumentación de desalineación reduce la degradación bajo desplazamientos PET/CT sintéticos sin perjudicar el test limpio.
@@ -179,7 +179,7 @@ gantt
 
 ## 6. Lista de tareas (para crear como issues en GitHub)
 
-Son 55 tareas. Cada una tiene responsable y revisor del PR; las marcadas «Todos» las hacen los cuatro. Los `- [ ]` se vuelven checklist en GitHub. El detalle y el calendario semanal están en `issues_tareas.md`; `create_issues.py` las crea en GitHub.
+Son 55 tareas. Cada una tiene responsable y revisor del PR; las marcadas «Todos» las hacen los cuatro. Los `- [ ]` se vuelven checklist en GitHub. El detalle y el calendario semanal están en `issues_tareas.md`; `scripts/create_issues.py` las crea en GitHub.
 
 ### Fase 0 — Arranque
 
@@ -675,7 +675,7 @@ Hito: Informe verificado, repo reproducible y presentación lista. Colchón: 21-
 Empezar a escribir temprano; el estado del arte ya está hecho.
 
 - [ ] Estructura: introducción, estado del arte, datos, métodos, resultados, discusión, limitaciones, conclusiones
-- [ ] docs/estado_del_arte.md adaptado al formato del informe sin perder las citas
+- [ ] ../referencias/estado_del_arte.md adaptado al formato del informe sin perder las citas
 
 #### T49 · Sección de datos y preprocesado
 
@@ -758,8 +758,8 @@ Cierre del proyecto.
 Creación automática (dentro del clon del repo, con `gh auth login` hecho):
 
 ```bash
-python create_issues.py --dry-run
-python create_issues.py --users "Ronald=usuario1,Agustin=usuario2,Dylan=usuario3,Abel=usuario4"
+python scripts/create_issues.py --dry-run
+python scripts/create_issues.py --users "Ronald=usuario1,Agustin=usuario2,Dylan=usuario3,Abel=usuario4"
 ```
 
 **Definition of Done para cualquier issue:** código en `main` vía PR revisado por el revisor asignado, tests pasando, salida documentada (archivo en `results/` o sección en `docs/`) y issue cerrado con enlace al PR.

@@ -1,1 +1,24 @@
-/Structure for 4 integrants
+# Entornos y artefactos locales
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Datos clínicos y volúmenes procesados
+/data/
+
+# Pesos y exportaciones de modelos
+/checkpoints/
+*.pt
+*.pth
+*.onnx
+
+# Imágenes médicas NIfTI (crudas o derivadas)
+*.nii
+*.nii.gz
+
+# Salidas locales reproducibles pueden añadirse selectivamente a results/

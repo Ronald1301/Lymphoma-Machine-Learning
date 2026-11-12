@@ -3,7 +3,7 @@
 **Proyecto:** Optimización de la detección y evaluación de lesiones en linfomas mediante PET/CT  
 **Equipo:** 4 personas (Ronald, Agustin, Dylan, Abel), sin roles fijos · **Cierre interno:** 20 dic 2026 · **Colchón:** 21-31 dic
 
-Este documento y `create_issues.py` salen de la misma fuente: las 55 tareas son idénticas en ambos.
+Este documento y `scripts/create_issues.py` salen de la misma fuente: las 55 tareas son idénticas en ambos.
 
 ## Cómo trabajamos
 
@@ -173,13 +173,13 @@ Requisitos: Python 3.10+, [GitHub CLI](https://cli.github.com) y haber ejecutado
 
 ```bash
 # 1) Ver qué crearía y validar el reparto, sin tocar GitHub
-python create_issues.py --dry-run
+python scripts/create_issues.py --dry-run
 
 # 2) Crear etiquetas, milestones e issues (desde dentro del clon del repo)
-python create_issues.py --users "Ronald=usuario1,Agustin=usuario2,Dylan=usuario3,Abel=usuario4"
+python scripts/create_issues.py --users "Ronald=usuario1,Agustin=usuario2,Dylan=usuario3,Abel=usuario4"
 
 # 3) Contra otro repo
-python create_issues.py --repo owner/nombre --users "Ronald=..,Agustin=..,Dylan=..,Abel=.."
+python scripts/create_issues.py --repo owner/nombre --users "Ronald=..,Agustin=..,Dylan=..,Abel=.."
 ```
 
 - Es **idempotente**: si un issue con el mismo prefijo `[Txx]` ya existe, lo salta; si se corta a mitad, se vuelve a ejecutar.
@@ -799,7 +799,7 @@ Extensión. Solo se afirma lo que se mida.
 Empezar a escribir temprano; el estado del arte ya está hecho.
 
 - [ ] Estructura: introducción, estado del arte, datos, métodos, resultados, discusión, limitaciones, conclusiones
-- [ ] docs/estado_del_arte.md adaptado al formato del informe sin perder las citas
+- [ ] docs/referencias/estado_del_arte.md adaptado al formato del informe sin perder las citas
 
 ### T49 · Sección de datos y preprocesado
 

@@ -1,16 +1,18 @@
 # Lymphoma-Machine-Learning
 
-**Optimización de la detección y evaluación de lesiones en linfomas mediante PET-CT**
+Proyecto de segmentación 3D de lesiones de linfoma en FDG-PET/CT y evaluación a nivel de vóxel, lesión y paciente (TMTV).
 
-Proyecto de Machine Learning sobre la detección, segmentación y cuantificación automática de lesiones de linfoma en imágenes FDG-PET/CT.
+## Documentación del proyecto
 
-## Documentación
+- [Roadmap del pipeline](docs/planificacion/roadmap_pipeline.md): fases, flujo técnico, entregables y criterios de finalización.
+- [Tareas del proyecto](docs/planificacion/issues_tareas.md): tareas T01–T55, responsables, dependencias y checklist.
+- [Plan experimental](docs/metodologia/plan_experimental.md): diseño técnico y evaluación.
+- [Brechas y oportunidades](docs/metodologia/gaps_y_oportunidades.md): hipótesis y motivación.
+- [Estado del arte](docs/referencias/estado_del_arte.md).
+- [Tabla comparativa](docs/referencias/tabla_comparativa.md) ([CSV](docs/referencias/tabla_comparativa.csv)).
 
-Todo el material está en [`docs/`](docs/):
+## Estructura del código
 
-| Documento | Contenido |
-|---|---|
-| [`estado_del_arte.md`](docs/estado_del_arte.md) | Revisión del campo: contexto clínico (Lugano, Deauville, TMTV), datasets y benchmarks, métodos de segmentación, métricas, generalización y despliegue. 59 referencias verificadas con DOI, PMID o arXiv. |
-| [`tabla_comparativa.md`](docs/tabla_comparativa.md) | Comparación de los principales estudios: tarea, arquitectura, datos, validación, resultados y limitaciones. También en [CSV](docs/tabla_comparativa.csv). |
-| [`gaps_y_oportunidades.md`](docs/gaps_y_oportunidades.md) | Problemas abiertos que identifica la literatura y oportunidades para el proyecto. |
-| [`plan_experimental.md`](docs/plan_experimental.md) | Plan de implementación provisional, sujeto a revisión en la siguiente fase. |
+El código fuente vive en `src/lymphoma/`, organizado por datos, modelos, entrenamiento, evaluación y despliegue. Los parámetros experimentales se guardan en `configs/`; las utilidades de línea de comandos, en `scripts/`; y las pruebas, en `tests/`.
+
+Los datos clínicos y los artefactos grandes de entrenamiento no se versionan. Consulta el roadmap y las tareas antes de iniciar una fase.
