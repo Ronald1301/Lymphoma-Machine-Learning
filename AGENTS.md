@@ -9,15 +9,15 @@ Equipo 9 · Universidad de La Habana · Proyecto de Machine Learning.
 Segmentación 3D de lesiones de linfoma en FDG-PET/CT, con evaluación a nivel de vóxel, de lesión y de paciente (TMTV).
 
 Documentos de referencia (en `docs/`, léelos antes de proponer cambios de diseño):
-- `docs/metodologia/plan_experimental.md`: diseño experimental (la fuente de verdad técnica).
-- `docs/metodologia/gaps_y_oportunidades.md`: hipótesis H1–H4.
-- `docs/referencias/estado_del_arte.md` y `docs/referencias/tabla_comparativa.md`: referencias verificadas.
-- `docs/planificacion/roadmap_pipeline.md` e `docs/planificacion/issues_tareas.md`: tareas T01–T55, fases 0–7, responsables.
+- `plan_experimental.md`: diseño experimental (la fuente de verdad técnica).
+- `gaps_y_oportunidades.md`: hipótesis H1–H4.
+- `referencias/estado_del_arte.md` y `tabla_comparativa.md`: referencias verificadas.
+- `roadmap_pipeline.md` e `issues_tareas.md`: tareas T01–T55, fases 0–7, responsables.
 
 ## Equipo
 
 Ronald (jefe del equipo), Agustin, Dylan y Abel. No hay roles fijos: todos trabajan en todas las fases.
-Cada tarea tiene un identificador `Txx` y un responsable en `docs/planificacion/issues_tareas.md`. Trabaja solo en la tarea que te asignen y no toques módulos de otra tarea sin avisar.
+Cada tarea tiene un identificador `Txx` y un responsable en `issues_tareas.md`. Trabaja solo en la tarea que te asignen y no toques módulos de otra tarea sin avisar.
 
 ## Entorno
 
@@ -45,7 +45,7 @@ tests/                pytest
 ```bash
 pip install -r requirements.txt
 pytest -q                                   # debe pasar antes de cada PR
-python scripts/create_issues.py --dry-run           # validar el reparto de tareas (no toca GitHub)
+python scripts/create_issues.py --dry-run   # validar el reparto de tareas (no toca GitHub)
 ```
 
 ## Reglas del proyecto (no negociables)
@@ -77,8 +77,6 @@ python scripts/create_issues.py --dry-run           # validar el reparto de tare
 ## Flujo de trabajo en git
 
 - Ramas `feat/<tema>`. Nada de push directo a `main`.
-- Mensajes de commit en inglés con el formato `type(Txx): short description`, en minúsculas y en modo imperativo. Usa el ID de tarea correspondiente; tipos habituales: `feat`, `fix`, `docs`, `test`, `refactor`, `chore`.
-- Ejemplo para T01: `feat(T01): create repository structure and gitignore`.
 - Un PR por tarea, con el id en el título (`[T17] Modelo SegResNet`) y enlazado al issue.
 - Cada PR lo revisa el siguiente en el anillo Ronald → Agustin → Dylan → Abel → Ronald.
 - Definition of Done: código en `main` vía PR revisado, tests pasando, salida documentada (archivo en `results/` o sección en `docs/`) e issue cerrado con enlace al PR.

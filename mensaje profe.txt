@@ -1,0 +1,20 @@
+Buenas, profe. Le comunicamos el enfoque que vamos a utilizar (Equipo 9):
+
+1) TAREA. Segmentación 3D de lesiones de linfoma en FDG-PET/CT basal, evaluada en tres niveles: vóxel (Dice, FPV, FNV), lesión (sensibilidad y falsos positivos por paciente, por tamaño) y paciente (TMTV con Bland-Altman e ICC). No hacemos predicción de respuesta: no encontramos un dataset público con pares longitudinales y etiquetas clínicas suficientes.
+
+2) DATOS. Subconjunto de linfoma de FDG-PET-CT-Lesions (autoPET). Split por paciente congelado con semilla fija, y el test se usa una sola vez al final.
+
+3) MODELO BASE. SegResNet 3D compacto (MONAI) con PET+CT, parches de 96³ a 3 mm, loss Dice+BCE. Lo elegimos porque en el estudio de Ahamed et al. (611 casos de linfoma) SegResNet alcanzó Dice mediana 0,68 en test externo y SwinUNETR no lo superó de forma consistente. Además cabe en GPU gratuita (Kaggle/Colab), a diferencia de nnU-Net, que en autoPET requiere 16 GB de VRAM y ~1.000 épocas.
+
+4) COMPARACIONES (lo que vamos a medir):
+- PET+CT vs PET-only con la misma arquitectura y presupuesto, para ver el valor de la CT.
+- Aumentación de desalineación PET/CT (técnica del ganador de autoPET III, Rokuss et al.), evaluada en test limpio y con desplazamientos sintéticos leve y moderado.
+- Opcional: prior anatómico suave con TotalSegmentator para reducir falsos positivos fisiológicos (cerebro, vejiga, riñones), sin excluir órganos de forma rígida.
+
+5) COMPARACIÓN CON EL ESTADO DEL ARTE. Usamos la literatura como contexto de rango, no como comparación directa: autoPET III (top Dice ~0,66), Ahamed et al. (0,68 en linfoma), Jiang et al. (0,78 solo PET en DLBCL) e Izadi et al. (0,76 en Hodgkin). Como cambian cohortes, trazadores y definición de lesión, no comparamos Dice entre estudios. La comparación rigurosa es contra nuestras propias ablaciones, con estadística pareada (Wilcoxon, bootstrap por paciente y corrección de Holm). Si el test tiene menos de 20 pacientes, lo declaramos exploratorio.
+
+6) HIPÓTESIS. H1: PET+CT supera a PET-only sin aumentar mucho el FPV. H2: la desalineación reduce la degradación bajo shifts sin perjudicar el test limpio. H3: el prior anatómico reduce el FPV sin perder sensibilidad extranodal. H4: mejor Dice no garantiza mejor acuerdo de TMTV.
+
+7) DESPLIEGUE. Exportación a ONNX y benchmark en CPU. La NPU solo la reportamos si logramos medirla.
+
+¿Le parece bien este enfoque o prefiere que ajustemos algo?
