@@ -5,7 +5,7 @@ Convenciones mínimas para que los cuatro integrantes no se pisen y para que tod
 ## Ramas
 
 - Una rama por tarea, con el nombre `feat/<tema>` (por ejemplo, `feat/contracts`).
-- **Nadie hace push directo a `main`.** La rama `main` no está protegida en GitHub, así que esta es una regla acordada por el equipo: todo cambio entra por pull request.
+- **Nadie hace push directo a `main`.** La protección de rama exige que todo cambio entre por PR y tenga una aprobación; la Action del ciclo valida además quién debe aprobarlo.
 - Antes de empezar una tarea, actualizar `main` (`git pull`) y crear la rama desde ahí.
 
 ## Commits
@@ -21,7 +21,7 @@ Tipos habituales: `feat`, `fix`, `docs`, `test`, `refactor`, `chore`. Ejemplo: `
 ## Pull requests
 
 - **Un PR por tarea.** Título: `[Txx] Nombre de la tarea`.
-- La descripción enlaza el issue con `Closes #<número del issue>`, para que se cierre al fusionar. El número es el del issue en GitHub, que no siempre coincide con el de la tarea.
+- La plantilla pide «Qué cambia», «Cómo se probó» e «Issue relacionado». Usa `Closes #<número>` solo cuando la tarea esté completa; para avances parciales, usa `Refs #<número>`.
 - La plantilla de `.github/pull_request_template.md` se carga sola al abrir el PR.
 - `pytest -q` debe pasar antes de pedir revisión.
 
@@ -40,10 +40,16 @@ Ronald → Agustin → Dylan → Abel → Ronald
 | Dylan | Abel |
 | Abel | Ronald |
 
-- El revisor asignado de cada tarea figura en su issue.
-- El PR se fusiona cuando el revisor asignado lo aprueba. El autor no fusiona su propio PR sin esa aprobación.
+- Los usernames verificados en GitHub son: Ronald `Ronald1301`, Agustín `agustin030902`, Dylan `Dylan2108` y Abel `amircalabel`.
+- `.github/workflows/pr-review-cycle.yml` solicita al siguiente integrante del anillo y exige su aprobación del último commit para PR dirigidos a `main`. No aprueba PRs ni los fusiona.
+- La protección de `main` requiere PR, una aprobación, aprobación posterior al último push, conversaciones resueltas y sin force-push ni eliminación.
+- El coordinador semanal fusiona después de la aprobación correcta y de que pasen los checks. GitHub protege el requisito de aprobación; quién pulsa «Merge» no se puede seleccionar dinámicamente por autor en este repositorio personal, así que esa parte sigue siendo una regla del equipo.
 - Las tareas que piden el acuerdo de todos (por ejemplo, T03 y T10) necesitan la confirmación de los cuatro en el PR o en el issue.
 - El revisor comprueba que el código cumple los contratos de `docs/contratos.md`, que los tests pasan y que no se suben datos ni checkpoints.
+
+### Puesta en marcha de la protección
+
+La regla de `main` se configura primero para exigir PR y una aprobación. El check `review-cycle` se añade a los checks obligatorios después de que el PR que instala este workflow sea aprobado y fusionado; GitHub no puede ejecutar como política estable un workflow que todavía no está en la rama predeterminada. Hasta entonces, el PR de instalación debe ser aprobado por Agustín y su autor no debe aprobarlo ni fusionarlo.
 
 ## Definition of Done
 

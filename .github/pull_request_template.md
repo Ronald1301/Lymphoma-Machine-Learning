@@ -1,9 +1,5 @@
 <!-- Título del PR: [Txx] Nombre de la tarea -->
 
-## Tarea
-
-Closes #
-
 ## Qué cambia
 
 -
@@ -11,6 +7,11 @@ Closes #
 ## Cómo se probó
 
 - [ ] `pytest -q` pasa en local
+- [ ] No aplica (explicar por qué)
+
+## Issue relacionado
+
+- `Closes #<número>` si la tarea queda completa; `Refs #<número>` para un avance parcial.
 
 ## Definition of Done
 
