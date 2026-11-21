@@ -11,6 +11,14 @@ Proyecto de segmentación 3D de lesiones de linfoma en FDG-PET/CT y evaluación 
 - [Estado del arte](docs/referencias/estado_del_arte.md).
 - [Tabla comparativa](docs/referencias/tabla_comparativa.md) ([CSV](docs/referencias/tabla_comparativa.csv)).
 
+## Instalación
+
+1. Instala [uv](https://docs.astral.sh/uv/): `winget install --id=astral-sh.uv -e` en Windows, `brew install uv` en macOS o `curl -LsSf https://astral.sh/uv/install.sh | sh` en Linux.
+2. En la carpeta del repositorio, ejecuta `uv sync`.
+3. Comprueba la instalación con `uv run python scripts/check_env.py`. La última línea debe decir `OK: el entorno coincide con las versiones fijadas.`
+
+Guía paso a paso para Windows, macOS, Linux, Kaggle y Colab: [Instalar el entorno](docs/reproducibilidad/entorno.md).
+
 ## Estructura del código
 
 El código fuente vive en `src/lymphoma/`, organizado por datos, modelos, entrenamiento, evaluación y despliegue. Los parámetros experimentales se guardan en `configs/`; las utilidades de línea de comandos, en `scripts/`; y las pruebas, en `tests/`.

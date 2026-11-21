@@ -24,7 +24,8 @@ Cada tarea tiene un identificador `Txx` y un responsable en `issues_tareas.md`. 
 - Máquina de desarrollo: laptop con **CPU** (Windows 11, Ryzen AI 7 350, 32 GB). **No hay GPU local.**
 - Entrenamientos largos: Kaggle/Colab (T4/P100), 6–10 h por corrida. El código debe poder **reanudar desde checkpoint**.
 - La NPU solo se usa vía ONNX/Vitis AI y **nunca se afirma aceleración sin medirla**.
-- Python 3.10+, PyTorch, MONAI, nibabel/SimpleITK, scikit-learn, scipy, pandas. Versiones fijadas en `requirements.txt`.
+- Python 3.12 (`.python-version`), PyTorch, MONAI, nibabel/SimpleITK, scikit-learn, scipy, pandas. Versiones fijadas con `==` en `pyproject.toml` y resueltas en `uv.lock` (gestor: uv). `requirements.txt` se exporta del lock y no se edita a mano. Ver `docs/reproducibilidad/entorno.md`.
+- En Linux (Kaggle/Colab) torch se instala desde el índice cu126 de PyTorch (funciona en T4 y P100). Los notebooks lanzan los scripts con `uv run`, nunca con el torch preinstalado.
 - Los scripts deben funcionar en Windows (rutas con `pathlib`, sin comandos solo de Linux).
 
 ## Estructura del repositorio
@@ -43,8 +44,10 @@ tests/                pytest
 ## Comandos
 
 ```bash
-pip install -r requirements.txt
-pytest -q                                   # debe pasar antes de cada PR
+uv sync                                     # instala el entorno fijado (alternativa: pip install -r requirements.txt)
+uv run pytest -q                            # debe pasar antes de cada PR
+uv run python scripts/check_env.py          # comprueba versiones fijadas y GPU
+uv add "paquete==X.Y.Z"                     # nueva dependencia; luego re-exportar requirements.txt (ver entorno.md)
 python scripts/create_issues.py --dry-run   # validar el reparto de tareas (no toca GitHub)
 ```
 
