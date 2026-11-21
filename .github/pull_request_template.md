@@ -10,7 +10,7 @@ Closes #
 
 ## Cómo se probó
 
-- [ ] `pytest -q` pasa en local
+- [ ] `uv run pytest -q` pasa en local
 
 ## Definition of Done
 
