@@ -23,7 +23,7 @@ Tipos habituales: `feat`, `fix`, `docs`, `test`, `refactor`, `chore`. Ejemplo: `
 - **Un PR por tarea.** Título: `[Txx] Nombre de la tarea`.
 - La descripción enlaza el issue con `Closes #<número del issue>`, para que se cierre al fusionar. El número es el del issue en GitHub, que no siempre coincide con el de la tarea.
 - La plantilla de `.github/pull_request_template.md` se carga sola al abrir el PR.
-- `pytest -q` debe pasar antes de pedir revisión.
+- `uv run pytest -q` debe pasar antes de pedir revisión.
 
 ## Revisión cruzada
 
