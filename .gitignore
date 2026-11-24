@@ -9,7 +9,10 @@ __pycache__/
 .ipynb_checkpoints/
 
 # Datos clínicos y volúmenes procesados
-/data/
+# (se ignora el contenido, no la carpeta, para poder re-incluir CSV de T07)
+/data/*
+!/data/manifest.csv
+!/data/sample_ids.csv
 
 # Pesos y exportaciones de modelos
 /checkpoints/

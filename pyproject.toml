@@ -14,6 +14,9 @@ dependencies = [
     "scikit-learn==1.9.1",
     "pandas==3.1.1",
     "pyyaml==6.0.3",
+    "idc-index==0.13.5",
+    "dicom2nifti==2.5.0",
+    "pydicom==3.0.1",
 ]
 
 [dependency-groups]
