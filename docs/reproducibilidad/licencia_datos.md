@@ -38,7 +38,7 @@ Si usamos estos datos en el informe o en cualquier entrega, citamos:
 - **Compartir derivados:** CC BY 4.0 permite compartir y adaptar con atribución; mantener la misma licencia en imágenes derivadas que se redistribuyan fuera del equipo.
 - **Datos en el repo:** los DICOM y NIfTI **no** se suben a git (`.gitignore` incluye `*.nii.gz`, `*.nii` y `/data/`).
 - **Compartir con el equipo:** la muestra se publica como **dataset privado de Hugging Face** (criterio de aceptación de T07: Kaggle, Drive u otro medio privado) para no repetir la descarga. El repo privado se comparte añadiendo al equipo en *Settings → Members*.
-- **Dataset T07:** <https://huggingface.co/datasets/Dylan2108/fdg-pet-ct-lesions> (privado; contiene `raw/` con los 5 NIfTI por estudio, `manifest.csv` y `sample_ids.csv`). Si se cambia el `HF_REPO_ID`, actualizar este enlace.
+- **Dataset T07:** <https://huggingface.co/datasets/lymphoma-ml-uh/fdg-pet-ct-lesions> (privado, bajo la organización del equipo; contiene `raw/` con los 5 NIfTI por estudio, `manifest.csv` y `sample_ids.csv`). Si se cambia el `HF_REPO_ID`, actualizar este enlace.
 - **Metadatos clínicos:** `Clinical-Metadata-FDG-PET_CT-Lesions.csv` (CC BY 4.0) procede de TCIA; se usa para diagnóstico y fechas.
 
 ## Qué descarga T07
