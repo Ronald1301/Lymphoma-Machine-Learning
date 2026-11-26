@@ -1,0 +1,46 @@
+[project]
+name = "lymphoma"
+version = "0.1.0"
+description = "Segmentación 3D de lesiones de linfoma en FDG-PET/CT (Equipo 9, Universidad de La Habana)."
+readme = "README.md"
+requires-python = "==3.12.*"
+dependencies = [
+    "torch==2.11.0",
+    "monai==1.6.1",
+    "nibabel==5.5.0",
+    "SimpleITK==2.5.7",
+    "numpy==2.5.5",
+    "scipy==1.18.1",
+    "scikit-learn==1.9.1",
+    "pandas==3.1.1",
+    "pyyaml==6.0.3",
+    "idc-index==0.13.5",
+    "dicom2nifti==2.5.0",
+    "pydicom==3.0.1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest==9.2.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.13.8,<0.14"]
+build-backend = "uv_build"
+
+[tool.uv]
+required-version = ">=0.13.8"
+python-preference = "only-managed"
+environments = [
+    "sys_platform == 'win32' and platform_machine == 'AMD64'",
+    "sys_platform == 'darwin' and platform_machine == 'arm64'",
+    "sys_platform == 'linux' and platform_machine == 'x86_64'",
+]
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu126", marker = "sys_platform == 'linux'" }]
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true

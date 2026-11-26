@@ -6,12 +6,7 @@
 
 ## Cómo se probó
 
-- [ ] `pytest -q` pasa en local
-- [ ] No aplica (explicar por qué)
-
-## Issue relacionado
-
-- `Closes #<número>` si la tarea queda completa; `Refs #<número>` para un avance parcial.
+- [ ] `uv run pytest -q` pasa en local
 
 ## Definition of Done
 

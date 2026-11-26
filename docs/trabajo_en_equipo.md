@@ -23,7 +23,7 @@ Tipos habituales: `feat`, `fix`, `docs`, `test`, `refactor`, `chore`. Ejemplo: `
 - **Un PR por tarea.** Título: `[Txx] Nombre de la tarea`.
 - La plantilla pide «Qué cambia», «Cómo se probó» e «Issue relacionado». Usa `Closes #<número>` solo cuando la tarea esté completa; para avances parciales, usa `Refs #<número>`.
 - La plantilla de `.github/pull_request_template.md` se carga sola al abrir el PR.
-- `pytest -q` debe pasar antes de pedir revisión.
+- `uv run pytest -q` debe pasar antes de pedir revisión.
 
 ## Revisión cruzada
 
