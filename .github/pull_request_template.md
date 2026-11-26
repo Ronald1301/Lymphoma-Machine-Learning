@@ -1,9 +1,5 @@
 <!-- Título del PR: [Txx] Nombre de la tarea -->
 
-## Tarea
-
-Closes #
-
 ## Qué cambia
 
 -

@@ -1,0 +1,96 @@
+name: PR review cycle
+
+on:
+  pull_request_target:
+    types: [opened, reopened, ready_for_review, synchronize, review_requested, review_request_removed]
+  pull_request_review:
+    types: [submitted, edited, dismissed]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  review-cycle:
+    name: review-cycle
+    if: ${{ github.event.pull_request.base.ref == 'main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Request and require the assigned reviewer
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
+        with:
+          script: |
+            const reviewerByAuthor = {
+              "ronald1301": "agustin030902",
+              "agustin030902": "Dylan2108",
+              "dylan2108": "amircalabel",
+              "amircalabel": "Ronald1301",
+            };
+
+            const eventPullRequest = context.payload.pull_request;
+            if (!eventPullRequest?.number) {
+              core.setFailed("The pull request number was not present in the event payload.");
+              return;
+            }
+
+            const { owner, repo } = context.repo;
+            const { data: pullRequest } = await github.rest.pulls.get({
+              owner,
+              repo,
+              pull_number: eventPullRequest.number,
+            });
+
+            if (pullRequest.base.ref !== "main") {
+              core.notice("The review cycle applies only to pull requests targeting main.");
+              return;
+            }
+
+            const author = pullRequest.user.login;
+            const expectedReviewer = reviewerByAuthor[author.toLowerCase()];
+            if (!expectedReviewer) {
+              core.setFailed(`No review-cycle entry is configured for PR author ${author}.`);
+              return;
+            }
+
+            const reviews = await github.paginate(github.rest.pulls.listReviews, {
+              owner,
+              repo,
+              pull_number: pullRequest.number,
+              per_page: 100,
+            });
+
+            const reviewerReviews = reviews
+              .filter((review) =>
+                review.user?.login.toLowerCase() === expectedReviewer.toLowerCase() &&
+                review.submitted_at,
+              )
+              .sort((left, right) =>
+                new Date(left.submitted_at).getTime() - new Date(right.submitted_at).getTime(),
+              );
+            const latestReview = reviewerReviews.at(-1);
+            const approvedCurrentHead =
+              latestReview?.state === "APPROVED" &&
+              latestReview.commit_id === pullRequest.head.sha;
+
+            if (approvedCurrentHead) {
+              core.info(`${expectedReviewer} approved the current PR head.`);
+              return;
+            }
+
+            if (!pullRequest.draft) {
+              const requestedLogins = (pullRequest.requested_reviewers ?? []).map((reviewer) =>
+                reviewer.login.toLowerCase(),
+              );
+              if (!requestedLogins.includes(expectedReviewer.toLowerCase())) {
+                await github.rest.pulls.requestReviewers({
+                  owner,
+                  repo,
+                  pull_number: pullRequest.number,
+                  reviewers: [expectedReviewer],
+                });
+                core.info(`Requested review from ${expectedReviewer}.`);
+              }
+            }
+
+            core.setFailed(
+              `Waiting for ${expectedReviewer} to approve the latest commit on this pull request.`,
+            );
